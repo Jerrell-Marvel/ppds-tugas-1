@@ -1,0 +1,56 @@
+baris 7 - 44 : menghitung frekuensi tiap kata per kategori (sama seperti case1, penjelasan di laporan1)
+
+baris 47 : variable wordMarkerList berupa list of list untuk menyimpan kata marker dari setiap kategori
+
+baris 48 : variable index untuk nantinya digunakan untuk slicing list
+
+baris 49 : loop wordFreqList
+
+baris 50 : variable listBawah untuk menyimpan sub list dari index 0 sampai sebelum index saat ini.
+
+baris 51 : variable list atas untuk menyimpan sub list dari index saat ini + 1 sampai index terakhir
+
+contoh [0,1,2,3,4,5]; indexSaatIni = 3, listBawah = [0,1,2], listAtas = [4,5]
+
+baris 52 : temp variable listMarkerSub berupa list untuk menyimpan kata marker pada satu kategori
+
+baris 53 : loop key dari dictFrekFolder
+
+baris 54 : variable penanda untuk menandakan sebuah kata adalah marker atau bukan
+
+baris 55 - 58 : loop listBawah dan mengecek jika kata saat ini berada di kategori lain
+
+baris 60 : jika kata masih merupakan marker setelah dicek dengan listBawah
+
+baris 61 - 64 : loop listAtas dan mengecek jika kata saat ini berada di kategori lain
+
+baris 66 - 67 : jika sebuah kata merupakan marker maka append ke listMarkerSub
+
+baris 68 : memasukan list kata marker sebuah kategori ke wordMarkerList
+
+baris 69 : increment nilai index
+
+===== VALIDASI HASIL =====
+kata "timewarner" merupakan kata marker dari kategori business karena hanya muncul di kategori tersebut
+for wordFreq in wordFreqList:
+    print(wordFreq.get("timewarner"))
+dengan kode diatas akan didapat hasil : 
+7
+None
+None
+None
+None
+dengan demikian kata timewarner hanya muncul di kategori business sebanyak 7 kali
+
+sedangkan kata "sales" bukan merupakan kata marker
+for wordFreq in wordFreqList:
+    print(wordFreq.get("sales"))
+dengan kode diatas akan didapat hasil :
+276
+87 
+8   
+None
+57
+yang menyatakan bahwa kata "sales" berada di beberapa kategori dan bukan  merupakan kata marker di semua kategori
+
+

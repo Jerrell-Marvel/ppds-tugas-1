@@ -1,0 +1,48 @@
+baris 7 - 44 : menghitung frekuensi tiap kata per kategori (sama seperti case1, penjelasan di laporan1)
+
+baris 47 : variable THRESHOLD untuk menentukan threshold (ubah variable ini untuk mengubah besaran threshold)
+
+baris 48 : variable wordMarkerList berupa list of list untuk menyimpan list marker per kategori
+
+baris 49 : variable wordFreqAvgDict untuk menyimpan rata-rata sebuah kata
+mengapa dibuat ? karena tidak mau menghitung rata-rata kata yang sama beberapa kali 
+misal kata "and" ada di semua kategori. Maka hanya perlu menghitung rata rata sekali sehingga ketika mengecek kata "and" di kategori selanjutnya rata rata kata "and" sudah dihitung dan sudah disimpan di dict wordFreqAvgDict (menambah efisiensi)
+
+baris 51 : loop wordFreqList
+
+baris 52 : variable subWordMarkerList berisi list marker satu kategori
+
+bairs 54 : loop key dari currWordFreq
+
+baris 55 : mengambil rata rata kata dari wordFreqAvgDict
+
+baris 57 : cek, jika rata-ratanya belum ada maka hitung
+
+baris 58 - 64 : menghitung rata rata sebuah kata dan menyimpan kedalam wordFreqAvgDict
+
+baris 66-67 : cek jika frekuensi kata melebihi rata-rata kata tersebut + THRESHOLD, maka kata tersebut adalah marker dan append kata ke subWordMarkerList
+
+baris 69 : append subWordMarkerList ke wordMarkerList
+
+===== VALIDASI HASIL =====
+kata "sales" merupakan kata marker untuk kategori business
+frekuensi kata "sales" di setiap kategori sebagai berikut : 
+276
+87 
+8   
+None
+57
+sehingga rata-rata kata "sales" adalah (276 + 87 + 8 + 0 + 57) / 5 = 85.6
+karena frekuensi kata "sales" di business adalah 276, maka frekuensi tersebut melebihi rata-rata + threshold (85.6 + 100), maka kata "sales" merupakan marker untuk kategori business
+
+kata "timewarner" bukan merupakan kata marker untuk kategori apapun
+frekuensi kata "timewarner" di setiap kategori sebagai berikut :
+7
+None
+None
+None
+None
+sehingga rata-rata kata "timewarner" adalah (7 + 0 + 0 + 0 + 0) / 5 = 1.4
+karena tidak ada frekuensi kata "timewarner" yang melebihi rata-rate + threshold (1.4 + 100), maka kata "timewarner" bukan merupakan marker di semua kategori
+
+

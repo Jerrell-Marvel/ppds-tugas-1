@@ -1,0 +1,75 @@
+ide outlier dengan menggunakan zscore diambil dari matkul slide statkom (ada di zscore-statkom.jpg)
+
+baris 7 - 44 : menghitung frekuensi tiap kata per kategori (sama seperti case1, penjelasan di laporan1)
+
+baris 48 : variable wordMarkerList berupa list of list untuk menyimpan list marker per kategori
+
+baris 49 - 50 : dict untuk menyimpan rata rata dan standar deviasi dari suatu kata (penjelasan di laporan3 -> berkaitan dengan efisiensi)
+
+baris 52 : variable ZSCORELIMIT untuk menentukan batasam zscore (ubah variable ini untuk mengubah besaran batasan zscore)
+
+baris 54 : loop wordFreqList
+
+baris 55 : temp variable subWordMarkerList berupa list untuk menyimpan kata marker pada satu kategori
+
+baris 57 : loop key currWordFreq
+
+baris 58 - 59 : variable wordAverage dan standardDev untuk mendapatkan rata-rata dan standar deviasi kata dari dictionary 
+
+baris 61 : cek jika rata-rata kata tidak ada di dictionary (standar deviasi juga pasti belum ada)
+
+baris 64 - 69 : menghitung rata-rata suatu kata dan memasukannya pada wordFreqAvgDict
+
+baris 71 - 80 : menghitung standar deviasi suatu kata dan memasukannya pada wordFreqAvgDict
+
+baris 82 : cek jika standardDev bukan 0 untuk mencegah division by zero errors
+
+baris 83 : menghitung zScore sesuai rumus
+
+baris 85 : cek jika zScore yang didapat lebih besar dari ZSCORELIMIT, jika iya kata merupakan marker dan append ke subWordMarkerList
+
+baris 88 : append subWordMarkerList ke wordMarkerList
+
+===== VALIDASI HASIL =====
+kata "ad" bukan merupakan kata marker di kategori manapun
+frekuensi kata "ad" di setiap kategori sebagai berikut : 
+3
+2   
+3   
+None
+6  
+rata-rata kata "ad" adalah (3 + 2 + 3 + 0 + 6) / 5 = 2.8
+standar deviasi kata "ad" adalah 
+\sqrt((3-2.8)^(2)+(2-2.8)^(2)+(3-2.8)^(2)+(0-2.8)^(2)+(6-2.8)^(2) / 5) = 1.9390719429665317
+sehingga zScore kata "ad" tiap kategori adalah sebagai berikut
+0.10314212462587942
+-0.41256849850351723
+0.10314212462587942
+doesn't exist
+1.6502739940140694
+kata yang tidak exist di sebuah kategori (frekuensi = 0) tidak perlu dicek apakah marker atau bukan
+zScore setiap kategori tidak ada yang melebihi ZSCORELIMIT yaitu 1.9 sehingga kata "ad" disetiap kategori bukan merupakan marker
+
+kata "oscar" merupakan kata marker di kategori entertainment
+frekuensi kata "oscar" di setiap kategori sebagai berikut : 
+None
+109
+None
+None
+None
+rata-rata kata "oscar" adalah (0 + 109 + 0 + 0 + 0) / 5 = 21.8
+standar deviasi kata "oscar" adalah 43.599999999999994
+sehingga zScore kata "ada" tiap kategori adalah sebagai berikut
+doesn't exist
+2.0000000000000004
+doesn't exist
+doesn't exist
+doesn't exist
+zScore kata "oscar" di kategori entertainment lebih besar dari ZSCORELIMIT (1.9) sehingga kata "oscar" merupakan marker untuk kategori entertainment
+
+
+
+
+
+
+

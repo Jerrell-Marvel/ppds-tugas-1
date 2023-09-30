@@ -1,0 +1,40 @@
+baris 9 : 
+    mendapatkan list berisi path folder menggunakan glob. symbol (*) digunakan untuk mengambil semua nama folder yang ada di dalam folder bbc
+
+baris 11 :
+    variable wordFreqList berupa list of dictionary yang digunakan untuk menyimpan frekuensi kata per kategori
+
+baris 13 - 44 : main logic untuk membaca file dan menghitung frekuensi tiap katanya
+
+baris 13 : loop untuk mendapatkan currFolderPath dari folderPathList
+
+baris 14 : menggunakan glob untuk mengambil path semua file .txt berdasarkan kategori folder menggunakan currFolderPath
+
+baris 16 : declare variable wordFreqDict untuk menyimpan frekuensi kata per kategori
+
+baris 18 : melooping untuk mendapatkan path .txt tiap folder kategori
+
+baris 19 : membuat file handler
+
+baris 21 & 23 : mekanisme membuka dan membaca file per baris
+
+baris 24 - 39 : mengecek per kata sesuai ketentuan soal dan mengupdate wordFreqDict (seperti latihan)
+
+baris 44 : meng-append wordFreqDict yang merupakan isi list frekuensi kata sebuah kategori ke dalam wordFreqList
+
+===== VALIDASI HASIL =====
+misal ingin mengetahui frekuensi kata "sales" dari per kategori
+
+for freq in wordFreqList:
+    print(freq.get("sales"))
+
+maka akan didapat hasil : 
+276
+87 
+8   
+None
+57
+
+yang artinya 276 sales ada di kategori business, 87 ada di entertainment, dst
+
+// Jika ingin mengecek manual (optional) bisa menaruh output di .txt dan search kata "sales" dan "timewarner" di file .txt tersebut
