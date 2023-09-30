@@ -23,6 +23,7 @@ for currFolderPath in folderPathList:
                 for currChar in currWord:
                     if currChar.isnumeric():
                         hasDigit = True
+                        break
 
                 if hasDigit == False:
                     wordFreq = wordFreqDict.get(currWord)
@@ -38,26 +39,27 @@ for currFolderPath in folderPathList:
 
 ##################################################################
 wordMarkerList = []
-
-for i in range(0, len(wordFreqList)):
-    subWordMarkerList = []
-
-    for currKey in wordFreqList[i].keys():
+index = 0
+for dictFrekFolder in wordFreqList:
+    listBawah = wordFreqList[:index]
+    listAtas = wordFreqList[index+1:]
+    listMarkerSub = []
+    for key in dictFrekFolder.keys():
         isMarker = True
-        for wordFreq in wordFreqList[:i]:
-            if (wordFreq.get(currKey) != None):
+        for dictFrekSub in listBawah:
+            if (dictFrekSub.get(key) != None):
                 isMarker = False
                 break
 
-        if (isMarker == True):
-            for wordFreq in wordFreqList[i+1:]:
-                if (wordFreq.get(currKey) != None):
+        if (isMarker):
+            for dictFrekSub2 in listAtas:
+                if (dictFrekSub2.get(key) != None):
                     isMarker = False
                     break
 
-        if isMarker == True:
-            subWordMarkerList.append(currKey)
-
-    wordMarkerList.append(subWordMarkerList)
+        if (isMarker):
+            listMarkerSub.append(key)
+    wordMarkerList.append(listMarkerSub)
+    index += 1
 
 print(wordMarkerList)

@@ -43,6 +43,8 @@ wordMarkerList = []
 wordFreqAvgDict = {}
 wordStandardDevDict = {}
 
+ZSCORELIMIT = 1.9
+
 for currWordFreq in wordFreqList:
     subWordMarkerList = []
 
@@ -51,7 +53,7 @@ for currWordFreq in wordFreqList:
         standardDev = wordStandardDevDict.get(currKey)
 
         if wordAverage == None:
-            standardDev = 0.0
+            standardDev = 0
             totalFreq = 0
             for wordFreq in wordFreqList:
                 tempWordFreq = wordFreq.get(currKey)
@@ -66,16 +68,15 @@ for currWordFreq in wordFreqList:
                 if tempWordFreq is None:
                     tempWordFreq = 0
 
-                standardDev = standardDev + \
-                    math.pow(tempWordFreq - wordAverage, 2)
+                standardDev += math.pow(tempWordFreq - wordAverage, 2)
 
             standardDev = math.sqrt(standardDev / len(wordFreqList))
             wordStandardDevDict[currKey] = standardDev
 
         if standardDev != 0:
-            zScore = (currWordFreq[currKey] - wordAverage) / standardDev
+            zScore = (currWordFreq.get(currKey) - wordAverage) / standardDev
             # print(zScore)
-            if zScore > 2:
+            if zScore > ZSCORELIMIT:
                 subWordMarkerList.append(currKey)
 
     wordMarkerList.append(subWordMarkerList)

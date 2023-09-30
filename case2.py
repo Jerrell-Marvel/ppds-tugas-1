@@ -38,7 +38,7 @@ for currFolderPath in folderPathList:
 
 #####################
 # AVERAGE
-THRESHOLD = 0
+THRESHOLD = 100
 wordMarkerList = []
 wordFreqAvgDict = {}
 
