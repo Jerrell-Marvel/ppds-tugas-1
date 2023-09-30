@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Sep 26 21:55:27 2023
-
-@author: Jerrell Marvel
-"""
-
 import glob
 import math
 
@@ -44,65 +37,7 @@ for currFolderPath in folderPathList:
 
     wordFreqList.append(wordFreqDict)
 
-
-###############
-# wordMarkerList = []
-
-# for i in range(0, len(wordFreqList)) :
-#     subWordMarkerList = []
-
-#     for currKey in wordFreqList[i].keys():
-#         isMarker = True
-#         for wordFreq in wordFreqList[:i]:
-#             if(wordFreq.get(currKey) != None):
-#                 isMarker = False
-#                 break
-
-#         for wordFreq in wordFreqList[i+1:]:
-#              if(wordFreq.get(currKey) != None):
-#                  isMarker = False
-#                  break
-
-#         if isMarker == True:
-#             subWordMarkerList.append(currKey)
-
-#     wordMarkerList.append(subWordMarkerList)
-
-# print(wordMarkerList)
-
-################
-
-
-#####################
-# THRESHOLD = 100
-# use average
-# wordMarkerList = []
-# wordFreqAvgDict = {}
-
-# for currWordFreq in wordFreqList :
-#     subWordMarkerList = []
-
-#     for currKey in currWordFreq.keys():
-#         wordAverage = wordFreqAvgDict.get(currKey)
-
-#         if wordAverage == None :
-#             totalFreq = 0
-#             for wordFreq in wordFreqList :
-#                 tempWordFreq = wordFreq.get(currKey)
-#                 if(tempWordFreq != None):
-#                     totalFreq += tempWordFreq
-#             wordAverage = totalFreq / len(wordFreqList)
-#             wordFreqAvgDict[currKey] = wordAverage
-
-#         if currWordFreq[currKey] > wordAverage + THRESHOLD:
-#             subWordMarkerList.append(currKey)
-
-#     wordMarkerList.append(subWordMarkerList)
-
-# print(wordMarkerList)
-# print(wordFreqAvgDict)
-#########################
-
+##############################################################################
 # OUTLIER
 wordMarkerList = []
 wordFreqAvgDict = {}
@@ -142,27 +77,7 @@ for currWordFreq in wordFreqList:
             # print(zScore)
             if zScore > 2:
                 subWordMarkerList.append(currKey)
-            if(currKey == "ad"):
-                print(zScore)
-                print(standardDev)
-                print(wordAverage)
-                print("-==========================")
 
     wordMarkerList.append(subWordMarkerList)
 
-# print(wordMarkerList)
-# print(wordFreqAvgDict)
-
-print(len(wordFreqAvgDict.keys()))
-print(len(wordStandardDevDict.keys()))
-
-for wordFreq in wordFreqList:
-    print(wordFreq.get("ad"))
-    
-
-    
-    
-    
-    
-    
-    
+print(wordMarkerList)
