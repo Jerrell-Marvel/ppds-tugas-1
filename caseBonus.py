@@ -1,3 +1,9 @@
+# =================================
+# Nikolas Giovanni (6182201009)
+# Christian Hadinata (6182201020)
+# Jerrell Marvel (6182201035)
+# =================================
+
 import glob
 import math
 
