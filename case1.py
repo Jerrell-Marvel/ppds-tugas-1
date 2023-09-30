@@ -37,29 +37,4 @@ for currFolderPath in folderPathList:
 
     wordFreqList.append(wordFreqDict)
 
-##################################################################
-wordMarkerList = []
-index = 0
-for dictFrekFolder in wordFreqList:
-    listBawah = wordFreqList[:index]
-    listAtas = wordFreqList[index+1:]
-    listMarkerSub = []
-    for key in dictFrekFolder.keys():
-        isMarker = True
-        for dictFrekSub in listBawah:
-            if (dictFrekSub.get(key) != None):
-                isMarker = False
-                break
-
-        if (isMarker):
-            for dictFrekSub2 in listAtas:
-                if (dictFrekSub2.get(key) != None):
-                    isMarker = False
-                    break
-
-        if (isMarker):
-            listMarkerSub.append(key)
-    wordMarkerList.append(listMarkerSub)
-    index += 1
-
-print(wordMarkerList)
+print(wordFreqList)

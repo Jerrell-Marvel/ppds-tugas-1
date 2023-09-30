@@ -23,6 +23,7 @@ for currFolderPath in folderPathList:
                 for currChar in currWord:
                     if currChar.isnumeric():
                         hasDigit = True
+                        break
 
                 if hasDigit == False:
                     wordFreq = wordFreqDict.get(currWord)
@@ -36,31 +37,29 @@ for currFolderPath in folderPathList:
 
     wordFreqList.append(wordFreqDict)
 
-#####################
-# AVERAGE
-THRESHOLD = 100
+##################################################################
 wordMarkerList = []
-wordFreqAvgDict = {}
+index = 0
+for dictFrekFolder in wordFreqList:
+    listBawah = wordFreqList[:index]
+    listAtas = wordFreqList[index+1:]
+    listMarkerSub = []
+    for key in dictFrekFolder.keys():
+        isMarker = True
+        for dictFrekSub in listBawah:
+            if (dictFrekSub.get(key) != None):
+                isMarker = False
+                break
 
-for currWordFreq in wordFreqList:
-    subWordMarkerList = []
+        if (isMarker):
+            for dictFrekSub2 in listAtas:
+                if (dictFrekSub2.get(key) != None):
+                    isMarker = False
+                    break
 
-    for currKey in currWordFreq.keys():
-        wordAverage = wordFreqAvgDict.get(currKey)
-
-        if wordAverage == None:
-            totalFreq = 0
-            for wordFreq in wordFreqList:
-                tempWordFreq = wordFreq.get(currKey)
-                if (tempWordFreq != None):
-                    totalFreq += tempWordFreq
-            wordAverage = totalFreq / len(wordFreqList)
-            wordFreqAvgDict[currKey] = wordAverage
-
-        if currWordFreq[currKey] > wordAverage + THRESHOLD:
-            subWordMarkerList.append(currKey)
-
-    wordMarkerList.append(subWordMarkerList)
+        if (isMarker):
+            listMarkerSub.append(key)
+    wordMarkerList.append(listMarkerSub)
+    index += 1
 
 print(wordMarkerList)
-# print(wordFreqAvgDict)

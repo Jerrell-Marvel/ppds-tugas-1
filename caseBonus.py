@@ -1,4 +1,5 @@
 import glob
+import math
 
 folderPathList = glob.glob("C:\\Kuliah\\kuliah-sem-3\\ppds\\tugas\\bbc\\*")
 
@@ -36,19 +37,23 @@ for currFolderPath in folderPathList:
 
     wordFreqList.append(wordFreqDict)
 
-#####################
-# AVERAGE
-THRESHOLD = 100
+##############################################################################
+# OUTLIER
 wordMarkerList = []
 wordFreqAvgDict = {}
+wordStandardDevDict = {}
+
+ZSCORELIMIT = 1.9
 
 for currWordFreq in wordFreqList:
     subWordMarkerList = []
 
     for currKey in currWordFreq.keys():
         wordAverage = wordFreqAvgDict.get(currKey)
+        standardDev = wordStandardDevDict.get(currKey)
 
         if wordAverage == None:
+            standardDev = 0
             totalFreq = 0
             for wordFreq in wordFreqList:
                 tempWordFreq = wordFreq.get(currKey)
@@ -57,10 +62,23 @@ for currWordFreq in wordFreqList:
             wordAverage = totalFreq / len(wordFreqList)
             wordFreqAvgDict[currKey] = wordAverage
 
-        if currWordFreq[currKey] > wordAverage + THRESHOLD:
-            subWordMarkerList.append(currKey)
+            for wordFreq in wordFreqList:
+                tempWordFreq = wordFreq.get(currKey)
+
+                if tempWordFreq is None:
+                    tempWordFreq = 0
+
+                standardDev += math.pow(tempWordFreq - wordAverage, 2)
+
+            standardDev = math.sqrt(standardDev / len(wordFreqList))
+            wordStandardDevDict[currKey] = standardDev
+
+        if standardDev != 0:
+            zScore = (currWordFreq.get(currKey) - wordAverage) / standardDev
+            # print(zScore)
+            if zScore > ZSCORELIMIT:
+                subWordMarkerList.append(currKey)
 
     wordMarkerList.append(subWordMarkerList)
 
 print(wordMarkerList)
-# print(wordFreqAvgDict)
