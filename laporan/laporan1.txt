@@ -37,4 +37,4 @@ None
 
 yang artinya 276 sales ada di kategori business, 87 ada di entertainment, dst
 
-// Jika ingin mengecek manual (optional) bisa menaruh output di .txt dan search kata "sales" dan "timewarner" di file .txt tersebut
+// Jika ingin mengecek manual (optional) bisa menaruh output di .txt dan search kata "sales" di file .txt tersebut
