@@ -31,26 +31,34 @@ baris 68 : memasukan list kata marker sebuah kategori ke wordMarkerList
 baris 69 : increment nilai index
 
 ===== VALIDASI HASIL =====
-kata "timewarner" merupakan kata marker dari kategori business karena hanya muncul di kategori tersebut
-for wordFreq in wordFreqList:
-    print(wordFreq.get("timewarner"))
-dengan kode diatas akan didapat hasil : 
-7
-None
-None
-None
-None
-dengan demikian kata timewarner hanya muncul di kategori business sebanyak 7 kali
+- kata "timewarner" merupakan kata marker dari kategori business karena hanya muncul di kategori tersebut
 
-sedangkan kata "sales" bukan merupakan kata marker
-for wordFreq in wordFreqList:
-    print(wordFreq.get("sales"))
-dengan kode diatas akan didapat hasil :
-276
-87 
-8   
-None
-57
-yang menyatakan bahwa kata "sales" berada di beberapa kategori dan bukan  merupakan kata marker di semua kategori
+    for wordFreq in wordFreqList:
+        print(wordFreq.get("timewarner"))
+
+    dengan kode diatas akan didapat hasil : 
+    7
+    None
+    None
+    None
+    None
+
+    kesimpulan:
+    dengan demikian kata timewarner hanya muncul di kategori business sebanyak 7 kali
+
+- sedangkan kata "sales" bukan merupakan kata marker
+
+    for wordFreq in wordFreqList:
+        print(wordFreq.get("sales"))
+
+    dengan kode diatas akan didapat hasil :
+    276
+    87 
+    8   
+    None
+    57
+
+    kesimpulan:
+    yang menyatakan bahwa kata "sales" berada di beberapa kategori dan bukan  merupakan kata marker di semua kategori
 
 
